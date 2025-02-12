@@ -8,9 +8,8 @@ using namespace std;
 int humanTurn(int humanTotalScore);
 int computerTurn(int computerTotalScore);
 
-int main()
+int main(){
 
-{
 	int humanTotalScore = 0, computerTotalScore = 0;
 	char ans;
 	
@@ -27,7 +26,7 @@ int main()
 		"BUT beware. as soon as you roll a 1 your total score for that round will become o and your turn ends.\n"
 		"To win the game get 100 points before the computer does."<< endl;
 	
-	cout << "\nWould you like to proceed? (y/n)";
+	cout << "\nWould you like to proceed? (y/n) ";
 	cin >> ans;
 
 	if (ans == 'n' || ans == 'N') {
@@ -36,14 +35,10 @@ int main()
 	}else {
 		cout << "\nEnjoy!!!!!" << endl;
 		this_thread::sleep_for(chrono::seconds(2));
-
 	}
-
-
 	int i = 1;
+	while (computerTotalScore <100 && humanTotalScore <100) {
 
-	while (true) {
-		
 		cout << "\nRound "<< i <<" Fight!!!"<<endl;
 		this_thread::sleep_for(chrono::seconds(2));
 
@@ -52,14 +47,17 @@ int main()
 		cout << "\nComputers Turn! " << endl;
 		computerTotalScore += computerTurn(computerTotalScore);
 
-		
 		cout << "\nYour total score is: " << humanTotalScore<<endl;
 		cout << "The computer's total score is: " << computerTotalScore<<endl;
 		this_thread::sleep_for(chrono::seconds(3));
 
-
 		i++;
 	}
+	if (humanTotalScore >= 100)
+		cout << "\nCongragulations!! you won! ";
+	else
+		cout << "\nThe computer won. You lost :(. Would you like to play again? ";
+
 	return 0;
 }
 int humanTurn(int humanTotalScore)
@@ -67,11 +65,9 @@ int humanTurn(int humanTotalScore)
 	int turnScore=0; 
 	char ans;
 	
-
 	if (humanTotalScore > 100) {
 		return 0;
 	}
-
 	int humanRoll;
 	do {
 		humanRoll= (rand() % 5) + 1;
@@ -82,7 +78,6 @@ int humanTurn(int humanTotalScore)
 			this_thread::sleep_for(chrono::seconds(2));
 			break; 
 		}
-
 		cout << "\nRoll: ";
 		this_thread::sleep_for(chrono::seconds(2));
 		cout<< humanRoll << endl;
@@ -94,13 +89,10 @@ int humanTurn(int humanTotalScore)
 		cout << endl;
 
 	} while (ans == 'y' || ans == 'Y');
-	cout << "\nYour score this round is: " << turnScore << endl;
 	this_thread::sleep_for(chrono::seconds(2));
-
 
 	return turnScore; 
 }
-
 int computerTurn(int computerTotalScore)
 {
 	int turnScore=0, computerRoll;
@@ -108,7 +100,6 @@ int computerTurn(int computerTotalScore)
 	if (computerTotalScore > 100) {
 		return 0;
 	}
-
 	while (turnScore < 20) {
 		this_thread::sleep_for(chrono::seconds(1));
 		computerRoll = (rand() % 6) + 1;
@@ -124,7 +115,6 @@ int computerTurn(int computerTotalScore)
 		}else{
 			turnScore += computerRoll;
 		}
-		
 	}
 	this_thread::sleep_for(chrono::seconds(2));
 
@@ -132,11 +122,8 @@ int computerTurn(int computerTotalScore)
 		cout << "\nHOLD.";
 		this_thread::sleep_for(chrono::seconds(2));
 	}
-
 	cout << "\nThe computers total score this round was: " << turnScore<<endl; 
 	this_thread::sleep_for(chrono::seconds(2));
 	
-
 	return turnScore;
-
 }
