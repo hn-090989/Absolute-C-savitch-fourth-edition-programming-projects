@@ -34,7 +34,7 @@ void conversion(int pounds, int ounces, int& kilograms, int& grams) {
 	double totalkilograms = totalOunces / (2.2046 * 16);
 
 	kilograms = static_cast<int>(totalkilograms);
-	grams = round((totalkilograms - pounds) * 1000);
+	grams = round((totalkilograms - kilograms) * 1000);
 }
 void output(int kilograms, int grams) {
 

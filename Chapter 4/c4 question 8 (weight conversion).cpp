@@ -35,6 +35,9 @@ void conversion(int kilograms, int grams, int& pounds, int& ounces) {
 	pounds = static_cast<int>(totalPounds);
 	ounces = round((totalPounds  - pounds)*16);
 	
+	if (ounces == 16) {
+		pounds += 1;
+		ounces = 0;
 }
 void output(int pounds, int ounces) {
 
