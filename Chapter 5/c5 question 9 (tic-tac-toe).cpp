@@ -41,6 +41,7 @@ int main() {
 
 	}
 	if ((win(board, 'O') || win(board, 'X')) == false) {
+		system("cls");
 		displayBoard(board);
 		cout << "Draw !!!!" << endl;
 	}
