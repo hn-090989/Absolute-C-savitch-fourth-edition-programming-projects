@@ -14,10 +14,10 @@ int main() {
 	char world[ROWS][COLUMNS];
 
 	initialCondition(world);
-	for (int i = 1; i <= 80; i++) {
+	for (int i = 1; i <= 100; i++) {
 		generation(world);
 		display(world);
-		this_thread::sleep_for(chrono::milliseconds(2000));
+		this_thread::sleep_for(chrono::seconds(2));this_thread::sleep_for(chrono::seconds(2));
 
 		system("cls");
 	}
